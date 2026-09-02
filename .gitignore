@@ -1,0 +1,18 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Resultados generados
+coverage/
+dist/
+
+# Datos locales de PostgreSQL
+postgres-data/
+
+
+.DS_Store
+Thumbs.db
