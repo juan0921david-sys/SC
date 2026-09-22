@@ -4,8 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-no-produccion';
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
-
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '8h';
 export const generateToken = (userId, email, role) => {
     return jwt.sign(
         { userId, email, role },

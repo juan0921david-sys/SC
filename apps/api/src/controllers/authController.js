@@ -3,9 +3,12 @@ import supabase from '../config/supabase.js';
 import { generateToken } from '../utils/jwt.js';
 import { validateEmail, validatePassword } from '../utils/validation.js';
 
+// ============================================
+// REGISTRAR NUEVO USUARIO
+// ============================================
 export const register = async (req, res) => {
     try {
-        const { email, password, full_name, role = 'worker' } = req.body;
+        const { email, password, full_name, role = 'worker', identification, route_id } = req.body;
 
         if (!email || !password) {
             return res.status(400).json({
@@ -28,7 +31,7 @@ export const register = async (req, res) => {
             });
         }
 
-        // Verificar si el usuario ya existe
+        // Verificar si el usuario ya existe (por email)
         const { data: existingUser } = await supabase
             .from('users')
             .select('email')
@@ -42,21 +45,42 @@ export const register = async (req, res) => {
             });
         }
 
+        // Verificar si la cédula ya existe (si se proporciona)
+        if (identification) {
+            const { data: existingId } = await supabase
+                .from('users')
+                .select('identification')
+                .eq('identification', identification)
+                .single();
+
+            if (existingId) {
+                return res.status(409).json({
+                    success: false,
+                    message: 'Esta cédula ya está registrada'
+                });
+            }
+        }
+
         // Hashear contraseña
         const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(password, salt);
 
+        // Preparar datos del usuario
+        const userData = {
+            email,
+            password_hash: passwordHash,
+            full_name: full_name || null,
+            role: role
+        };
+
+        // Agregar campos opcionales si se proporcionan
+        if (identification) userData.identification = identification;
+        if (route_id) userData.route_id = route_id;
+
         // Crear usuario
         const { data: user, error } = await supabase
             .from('users')
-            .insert([
-                {
-                    email,
-                    password_hash: passwordHash,
-                    full_name: full_name || null,
-                    role: role
-                }
-            ])
+            .insert([userData])
             .select()
             .single();
 
@@ -89,30 +113,52 @@ export const register = async (req, res) => {
     }
 };
 
+// ============================================
+// INICIAR SESIÓN (ACEPTA EMAIL O CÉDULA)
+// ============================================
 export const login = async (req, res) => {
     try {
-        const { email, password } = req.body;
+        // Aceptar tanto "email" como "identifier" (cédula o email)
+        const identifier = req.body.email || req.body.identifier || req.body.identification;
+        const { password } = req.body;
 
-        if (!email || !password) {
+        if (!identifier || !password) {
             return res.status(400).json({
                 success: false,
-                message: 'Email y contraseña son requeridos'
+                message: 'Usuario y contraseña son requeridos'
             });
         }
 
-        const { data: user, error } = await supabase
-            .from('users')
-            .select('*')
-            .eq('email', email)
-            .single();
+        // Determinar si es email o cédula
+        const isEmail = validateEmail(identifier);
 
-        if (error || !user) {
+        let userQuery;
+        if (isEmail) {
+            // Buscar por email
+            userQuery = supabase
+                .from('users')
+                .select('*')
+                .eq('email', identifier.toLowerCase())
+                .single();
+        } else {
+            // Buscar por cédula
+            userQuery = supabase
+                .from('users')
+                .select('*')
+                .eq('identification', identifier)
+                .single();
+        }
+
+        const { data: user, error: findError } = await userQuery;
+
+        if (findError || !user) {
             return res.status(401).json({
                 success: false,
                 message: 'Credenciales inválidas'
             });
         }
 
+        // Verificar si el usuario está activo
         if (user.is_active === false) {
             return res.status(403).json({
                 success: false,
@@ -120,6 +166,7 @@ export const login = async (req, res) => {
             });
         }
 
+        // Verificar contraseña
         const isPasswordValid = await bcrypt.compare(password, user.password_hash);
         if (!isPasswordValid) {
             return res.status(401).json({
@@ -128,7 +175,10 @@ export const login = async (req, res) => {
             });
         }
 
+        // Generar token
         const token = generateToken(user.id, user.email, user.role);
+
+        // Respuesta
         const { password_hash, ...userWithoutPassword } = user;
 
         res.json({
@@ -149,12 +199,31 @@ export const login = async (req, res) => {
     }
 };
 
+// ============================================
+// OBTENER PERFIL DEL USUARIO AUTENTICADO
+// ============================================
 export const getProfile = async (req, res) => {
     try {
+        const userId = req.user.userId;
+
         const { data: user, error } = await supabase
             .from('users')
-            .select('id, email, full_name, role, is_active, created_at')
-            .eq('id', req.user.userId)
+            .select(`
+                id, 
+                email, 
+                full_name, 
+                role, 
+                is_active, 
+                created_at,
+                identification,
+                route_id,
+                routes:route_id (
+                    id,
+                    name,
+                    description
+                )
+            `)
+            .eq('id', userId)
             .single();
 
         if (error || !user) {

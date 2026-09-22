@@ -6,9 +6,10 @@ import {
     searchClients,
     updateClient,
     deleteClient,
-    activateClient
+    activateClient,
+    deleteClientPermanent
 } from '../controllers/clientController.js';
-import { authenticate } from '../middlewares/authMiddleware.js';
+import { authenticate, authorize } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
@@ -21,7 +22,12 @@ router.get('/', getAllClients);
 router.get('/search', searchClients);
 router.get('/:id', getClientById);
 router.put('/:id', updateClient);
+
+// Soft delete (desactivar) - disponible para todos
 router.delete('/:id', deleteClient);
 router.patch('/:id/activate', activateClient);
+
+// Eliminación permanente - SOLO ADMIN
+router.delete('/:id/permanent', authorize('admin'), deleteClientPermanent);
 
 export default router;

@@ -1,0 +1,74 @@
+/* ============================================
+   SISTEMA DE COBRO - CSS GLOBAL (Y2K EDITION)
+   ============================================ */
+
+/* --- IMPORTACIONES --- */
+@import './utils.css';
+@import './components.css';
+@import './pages.css';
+
+/* --- VARIABLES CSS (COLORES Y2K) --- */
+:root {
+    /* Colores de ventana Windows 98 */
+    --win-bg: #c0c0c0;
+    --win-blue: #B85F28;
+    /* Naranja principal */
+    --win-blue-light: #D47A32;
+    /* Naranja claro */
+    --win-dark: #404040;
+    --win-light: #ffffff;
+    --y2k-green: #00ff00;
+    /* Verde brillante */
+    --win-dark: #404040;
+
+    /* Colores Y2K - TU PALETA */
+    --y2k-bg-dark: #1a1a1a;
+    /* Negro suave para fondo */
+    --y2k-bg-darker: #0f0f0f;
+    /* Negro más oscuro */
+    --y2k-orange: #B85F28;
+    /* Naranja principal */
+    --y2k-orange-light: #D47A32;
+    /* Naranja claro */
+    --y2k-orange-lighter: #E89A5A;
+    /* Naranja más claro */
+    --y2k-white: #ffffff;
+    /* Blanco */
+    --y2k-black: #000000;
+    /* Negro */
+
+    /* Estados */
+    --status-active: #80ff80;
+    --status-mora: #ff8080;
+    --status-warning: #ffff80;
+
+    /* Fuentes */
+    --font-retro: 'VT323', monospace;
+    --font-system: 'MS Sans Serif', 'Tahoma', sans-serif;
+}
+
+/* --- RESET Y ESTILOS BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-system);
+}
+
+body {
+    background-color: #2a2a2a;
+    /* ⬅️ Gris más claro (antes #1a1a1a) */
+
+
+    color: #000;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: var(--win-blue);
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -296,3 +296,66 @@ export const activateClient = async (req, res) => {
         });
     }
 };
+
+// ============================================
+// ELIMINAR CLIENTE PERMANENTEMENTE (Solo admin)
+// ============================================
+export const deleteClientPermanent = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // 1. Verificar que el cliente existe
+        const { data: existingClient, error: findError } = await supabase
+            .from('clients')
+            .select('id, full_name')
+            .eq('id', id)
+            .single();
+
+        if (findError || !existingClient) {
+            return res.status(404).json({
+                success: false,
+                message: 'Cliente no encontrado'
+            });
+        }
+
+        // 2. Verificar que el cliente no tenga créditos asociados
+        const { data: credits, error: creditError } = await supabase
+            .from('credits')
+            .select('id')
+            .eq('client_id', id)
+            .limit(1);
+
+        if (credits && credits.length > 0) {
+            return res.status(400).json({
+                success: false,
+                message: 'No se puede eliminar el cliente porque tiene créditos asociados. Primero elimine los créditos o desactive el cliente.'
+            });
+        }
+
+        // 3. Eliminar el cliente permanentemente
+        const { error: deleteError } = await supabase
+            .from('clients')
+            .delete()
+            .eq('id', id);
+
+        if (deleteError) {
+            console.error('Error eliminando cliente:', deleteError);
+            return res.status(500).json({
+                success: false,
+                message: 'Error al eliminar el cliente'
+            });
+        }
+
+        res.json({
+            success: true,
+            message: `Cliente "${existingClient.full_name}" eliminado exitosamente`
+        });
+
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Error interno del servidor'
+        });
+    }
+};

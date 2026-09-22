@@ -1,0 +1,202 @@
+/* ============================================
+   PÁGINAS (Y2K EDITION)
+   ============================================ */
+
+/* ============================================
+   LOGIN
+   ============================================ */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--y2k-teal);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+}
+
+.login-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-logo h1 {
+    font-family: var(--font-retro);
+    font-size: 36px;
+    color: #D47A32;
+    text-shadow: 3px 3px 0px #000;
+    letter-spacing: 2px;
+}
+
+.login-logo p {
+    font-size: 12px;
+    color: #ffffff;
+    text-shadow: 1px 1px #000;
+    margin-top: 4px;
+}
+
+.login-form {
+    padding: 20px;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 11px;
+}
+
+.login-footer a {
+    color: var(--win-blue);
+    text-decoration: underline;
+}
+
+.login-footer a:hover {
+    color: var(--win-blue-light);
+}
+
+/* ============================================
+   DASHBOARD
+   ============================================ */
+.dashboard {
+    min-height: 100vh;
+    background-color: var(--y2k-teal);
+    padding: 20px;
+}
+
+.dashboard-content {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    font-family: var(--font-retro);
+    font-size: 28px;
+    color: #D47A32;
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #000;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tarjetas de estadísticas */
+.stat-card {
+    background: var(--win-bg);
+    border: 2px solid;
+    border-color: var(--win-light) var(--win-dark) var(--win-dark) var(--win-light);
+    padding: 16px;
+    box-shadow: 3px 3px 0px #000;
+    text-decoration: none;
+    color: #000;
+    display: block;
+    transition: transform 0.1s;
+}
+
+.stat-card:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px #000;
+}
+
+.stat-card:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+.stat-card-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.stat-card-count {
+    font-family: var(--font-retro);
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--win-blue);
+    line-height: 1;
+}
+
+.stat-card-label {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 4px;
+    text-transform: uppercase;
+}
+
+.stat-card-blue { background: #c0d8f0; }
+.stat-card-green { background: #c0f0c0; }
+.stat-card-purple { background: #e0c0f0; }
+.stat-card-orange { background: #f0d8c0; }
+.stat-card-yellow { background: #f0f0c0; }
+.stat-card-red { background: #f0c0c0; }
+
+/* Sección de la tabla en el dashboard */
+.dashboard-table-section {
+    background: var(--win-bg);
+    border: 3px solid;
+    border-color: var(--win-light) var(--win-dark) var(--win-dark) var(--win-light);
+    box-shadow: 6px 6px 0px #000;
+    margin-bottom: 20px;
+}
+
+.dashboard-table-header {
+    background: linear-gradient(90deg, var(--win-blue), var(--win-blue-light));
+    color: #fff;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-shadow: 1px 1px #000;
+}
+
+.dashboard-table-body {
+    padding: 12px;
+}
+
+/* ============================================
+   PÁGINA DE CLIENTES (PREPARADO)
+   ============================================ */
+.clients-page {
+    min-height: 100vh;
+    background-color: var(--y2k-teal);
+    padding: 20px;
+}
+
+.clients-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.clients-header {
+    font-family: var(--font-retro);
+    font-size: 28px;
+    color: #D47A32;
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #000;
+}

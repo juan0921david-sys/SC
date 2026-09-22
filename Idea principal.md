@@ -1,3 +1,28 @@
-Se necesita mejorar un programa de base datos, el proyecto consiste en una pagina o aplicativo web principal (parte administrativa), donde se registre con: nombre de la persona, cantidad del credito, de acuerdo a eso se scara un porcentaje de como se trabajara de acuerdo a: las cuotas del crédito, cantidad y cada cuanto se pagara, con eso, se hace el calculo de cuanto quedan las cuotas cada tanto que elija. Tambien se añadirá un calendario para ver proximos pagos o persoans que deberían pagar en el día, semana, mes, etc. 
+El proyecto consiste en desarrollar un **sistema de gestión y cobro de créditos** para una empresa que actualmente necesita organizar y controlar la información relacionada con sus clientes, créditos, cuotas y pagos.
 
-Todo esa base de datos tiene que estar conectado a una aplicación u otra parte de la pagina, donde serán los "usuarios", donde busque a una persona con su cedula, nombre o apellido e igual le aparezca, al buscarlo mostrara el historial de crédito o la información que haya en la base de datos, se tiene que arrojar cuantas cuotas faltan, que exista la posibilidad de abonar, y eso se reste a la cuota que en teoría debería pagar, y al crédito final, también tener una opción de "imprimir" al hacer el pago, un tipo de recibo para tener constancia que hubo pago, no literalmente imprimir, sino que se de la opción de descargar un archivo o imagen, la información y cosas como administrativas, solo las pueda cambiar la persona con el permiso, obviamente todo lo que digite el usuario se mande a la base de datos, es decir, se actualice automáticamente con lo digitalizado. 
+El sistema permitirá <strong>centralizar la información</strong> y facilitar las actividades que realizan los trabajadores y administradores de la empresa. Los trabajadores podrán buscar clientes, consultar sus créditos y registrar las operaciones realizadas durante el proceso de cobro, como pagos completos o abonos.
+
+También será posible registrar nuevos créditos. Cuando se registre un nuevo crédito, se ingresarán los datos del cliente, las condiciones del crédito y, cuando corresponda, la información del codeudor. A partir de esta información, el sistema podrá generar posteriormente el plan de pagos y organizar las cuotas dentro de un calendario.
+
+El sistema conservará el historial de los créditos y pagos, permitiendo consultar la información de créditos anteriores aunque estos ya hayan sido pagados completamente.
+
+El objetivo principal es crear una herramienta que permita llevar un mejor control de la operación de la empresa, reducir la dependencia de procesos manuales y centralizar la información en un solo sistema.
+
+Con una arquitectura monolito modular. 
+
+### Aplicación web
+
+Será utilizada principalmente para las funciones administrativas.
+Tecnologías:
+- React
+- Vite
+- JavaScript
+- HTML
+- CSS
+### Aplicación móvil
+Será utilizada principalmente por los trabajadores durante sus actividades de cobro.
+**Tecnologías:**
+
+- React Native
+- Exp
+Ambas aplicaciones utilizarán el mismo backend y la misma base de datos.

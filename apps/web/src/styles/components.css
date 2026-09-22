@@ -1,0 +1,761 @@
+/* ============================================
+   COMPONENTES (Y2K EDITION)
+   ============================================ */
+
+/* ============================================
+   VENTANA ESTILO WINDOWS 98
+   ============================================ */
+.win-window {
+    background: var(--win-bg);
+    border: 3px solid;
+    border-color: var(--win-light) var(--win-dark) var(--win-dark) var(--win-light);
+    box-shadow: 6px 6px 0px #000;
+}
+
+.win-titlebar {
+    background: linear-gradient(90deg, var(--win-blue), var(--win-blue-light));
+    color: white;
+    padding: 4px 8px;
+    font-weight: bold;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-shadow: 1px 1px #000;
+}
+
+.win-titlebar-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.win-titlebar-btn {
+    background: var(--win-bg);
+    border: 2px solid;
+    border-color: var(--win-light) var(--win-dark) var(--win-dark) var(--win-light);
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #000;
+    padding: 0;
+    line-height: 1;
+}
+
+.win-titlebar-btn:active {
+    border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);
+}
+
+.win-body {
+    padding: 16px;
+}
+
+/* ============================================
+   BOTONES RETRO
+   ============================================ */
+.btn-retro {
+    background: var(--win-bg);
+    border: 2px solid;
+    border-color: var(--win-light) var(--win-dark) var(--win-dark) var(--win-light);
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    box-shadow: 1px 1px 0px #000;
+    font-family: var(--font-system);
+    transition: none;
+    color: #000;
+}
+
+.btn-retro:hover {
+    background: #d0d0d0;
+}
+
+.btn-retro:active {
+    border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);
+    box-shadow: none;
+    transform: translate(1px, 1px);
+}
+
+.btn-retro:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Variantes de botón */
+.btn-primary {
+    background: var(--y2k-yellow);
+    color: #000;
+}
+
+.btn-primary:hover {
+    background: #e0a020;
+}
+
+.btn-success {
+    background: var(--status-active);
+    color: #004000;
+}
+
+.btn-success:hover {
+    background: #60df60;
+}
+
+.btn-danger {
+    background: var(--win-bg);
+    color: var(--y2k-red);
+}
+
+.btn-danger:hover {
+    background: #ffd0d0;
+}
+
+.btn-warning {
+    background: var(--status-warning);
+    color: #404000;
+}
+
+.btn-warning:hover {
+    background: #e0e060;
+}
+
+.btn-info {
+    background: var(--y2k-cyan);
+    color: #000;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-sm {
+    padding: 3px 8px;
+    font-size: 11px;
+}
+
+.btn-lg {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* ============================================
+   BOTÓN DE PERFIL
+   ============================================ */
+.btn-profile {
+    background: linear-gradient(180deg, #6ba3d4, #4a7fb5);
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px #000;
+    border-color: #8bb8e0 #2d5a8a #2d5a8a #8bb8e0;
+}
+
+.btn-profile:hover {
+    background: linear-gradient(180deg, #8bb8e0, #6ba3d4);
+}
+
+.btn-profile:active {
+    border-color: #2d5a8a #8bb8e0 #8bb8e0 #2d5a8a;
+}
+
+/* ============================================
+   BOTÓN DE VER CRÉDITOS (DESTACADO)
+   ============================================ */
+.btn-credits {
+    background: linear-gradient(180deg, #D47A32, #B85F28);
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px #000;
+    border-color: #E89A5A #8B4513 #8B4513 #E89A5A;
+    padding: 6px 12px;
+    font-size: 11px;
+    animation: pulse-credits 2s infinite;
+}
+
+.btn-credits:hover {
+    background: linear-gradient(180deg, #E89A5A, #D47A32);
+}
+
+.btn-credits:active {
+    border-color: #8B4513 #E89A5A #E89A5A #8B4513;
+    animation: none;
+}
+
+@keyframes pulse-credits {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 122, 50, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 4px rgba(212, 122, 50, 0);
+    }
+}
+
+/* ============================================
+   INPUTS RETRO
+   ============================================ */
+.input-retro {
+    width: 100%;
+    background: #fff;
+    border: 2px solid;
+    border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);
+    padding: 5px 8px;
+    font-size: 12px;
+    outline: none;
+    font-family: var(--font-system);
+}
+
+.input-retro:focus {
+    background: #fffff0;
+}
+
+.input-retro:disabled {
+    background: #e0e0e0;
+    cursor: not-allowed;
+}
+
+.input-label {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    color: #000;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+/* ============================================
+   TABLAS RETRO
+   ============================================ */
+.table-container {
+    background: #fff;
+    border: 2px solid;
+    border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);
+    overflow: auto;
+}
+
+.table-retro {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.table-retro th {
+    background: var(--win-bg);
+    border: 1px solid var(--win-dark);
+    padding: 6px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    font-weight: bold;
+    font-size: 11px;
+    z-index: 1;
+}
+
+.table-retro td {
+    border: 1px solid #ccc;
+    padding: 6px;
+    vertical-align: middle;
+}
+
+.table-retro tr:nth-child(even) {
+    background: #f4f4f4;
+}
+
+.table-retro tr:hover {
+    background: #e0e8f0;
+    cursor: default;
+}
+
+.table-retro th:last-child,
+.table-retro td:last-child {
+    min-width: 220px;
+    white-space: nowrap;
+}
+
+.table-retro th:nth-child(4),
+.table-retro td:nth-child(4) {
+    min-width: 120px;
+}
+
+.table-retro th:nth-child(5),
+.table-retro td:nth-child(5) {
+    min-width: 100px;
+}
+
+.table-retro th:nth-child(6),
+.table-retro td:nth-child(6) {
+    min-width: 90px;
+}
+
+.table-retro .btn-retro {
+    padding: 4px 8px;
+    font-size: 11px;
+    margin: 1px;
+}
+
+.table-retro .btn-retro.btn-credits {
+    padding: 5px 10px;
+    font-size: 10px;
+}
+
+/* ============================================
+   BARRA DE PROGRESO
+   ============================================ */
+.progress-bar-container {
+    background: #e0e0e0;
+    height: 18px;
+    border: 1px solid #000;
+    position: relative;
+    min-width: 80px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background: linear-gradient(180deg, #80ff80, #40c040);
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.progress-bar-fill.progress-low {
+    background: linear-gradient(180deg, #ff8080, #c04040);
+}
+
+.progress-bar-fill.progress-mid {
+    background: linear-gradient(180deg, #ffff80, #c0c040);
+}
+
+.progress-bar-fill.progress-high {
+    background: linear-gradient(180deg, #80ff80, #40c040);
+}
+
+.progress-bar-text {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 16px;
+    color: #000;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================
+   BADGES DE ESTADO
+   ============================================ */
+.badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: bold;
+    border: 1px solid #000;
+    font-family: var(--font-system);
+}
+
+.badge-active {
+    background: var(--status-active);
+    color: #004000;
+}
+
+.badge-mora {
+    background: var(--status-mora);
+    color: #400000;
+}
+
+.badge-warning {
+    background: var(--status-warning);
+    color: #404000;
+}
+
+.badge-info {
+    background: #80c0ff;
+    color: #000040;
+}
+
+.badge-gray {
+    background: #d0d0d0;
+    color: #404040;
+}
+
+/* ============================================
+   MODAL RETRO
+   ============================================ */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    backdrop-filter: blur(2px);
+}
+
+.modal-window {
+    width: 100%;
+    max-width: 750px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-window-sm {
+    max-width: 450px;
+}
+
+.modal-window-lg {
+    max-width: 900px;
+    width: 95%;
+}
+
+/* Modal de advertencia */
+.modal-warning .win-titlebar {
+    background: linear-gradient(90deg, #808000, #b0b000);
+}
+
+/* ============================================
+   BARRA DE ESTADO
+   ============================================ */
+.status-bar {
+    background: var(--win-bg);
+    border-top: 2px solid var(--win-dark);
+    padding: 4px 8px;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.status-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.status-indicator-green {
+    background: #00ff00;
+}
+
+.status-indicator-red {
+    background: #ff0000;
+}
+
+.status-indicator-yellow {
+    background: #ffff00;
+}
+
+/* ============================================
+   NAVBAR RETRO
+   ============================================ */
+.navbar-retro {
+    background: var(--win-bg);
+    border-bottom: 2px solid #000;
+    padding: 6px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 1px 1px var(--win-light), inset -1px -1px var(--win-dark);
+}
+
+.navbar-title {
+    font-family: var(--font-retro);
+    font-size: 22px;
+    color: #000;
+    text-shadow: 1px 1px var(--y2k-cyan);
+}
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 12px;
+}
+
+.navbar-username {
+    font-weight: bold;
+}
+
+.navbar-logout {
+    background: var(--win-bg);
+    border: 2px solid;
+    border-color: var(--win-light) var(--win-dark) var(--win-dark) var(--win-light);
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--y2k-red);
+}
+
+.navbar-logout:active {
+    border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);
+}
+
+/* ============================================
+   ALERTAS RETRO
+   ============================================ */
+.alert-retro {
+    padding: 8px 12px;
+    border: 2px solid;
+    border-color: var(--win-light) var(--win-dark) var(--win-dark) var(--win-light);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.alert-retro button {
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.alert-retro button:hover {
+    opacity: 1;
+}
+
+.alert-danger {
+    background: #ffe0e0;
+    color: var(--y2k-red);
+}
+
+.alert-success {
+    background: #e0ffe0;
+    color: var(--y2k-green);
+}
+
+.alert-warning {
+    background: #ffffe0;
+    color: #808000;
+}
+
+.alert-info {
+    background: #e0f0ff;
+    color: var(--win-blue);
+}
+
+/* ============================================
+   LOADING SPINNER RETRO
+   ============================================ */
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: var(--font-retro);
+    font-size: 24px;
+    color: var(--win-blue);
+    background: var(--y2k-teal);
+}
+
+.loading-spinner::after {
+    content: '...';
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+
+    0%,
+    20% {
+        content: '.';
+    }
+
+    40% {
+        content: '..';
+    }
+
+    60%,
+    100% {
+        content: '...';
+    }
+}
+
+/* ============================================
+   ESTADOS DE CARGA Y VACÍO
+   ============================================ */
+.loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    font-family: var(--font-retro);
+    font-size: 18px;
+    color: var(--win-blue);
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.empty-state-text {
+    font-family: var(--font-retro);
+    font-size: 18px;
+    color: #666;
+}
+
+/* ============================================
+   MARQUEE RETRO
+   ============================================ */
+.marquee-retro {
+    background: #000;
+    color: #00ff00;
+    font-family: var(--font-retro);
+    font-size: 16px;
+    padding: 3px;
+    border: 2px solid var(--win-dark);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-retro marquee {
+    display: block;
+}
+
+/* ============================================
+   FORM SECTION TITLE
+   ============================================ */
+.form-section-title {
+    background: linear-gradient(90deg, var(--win-blue), var(--win-blue-light));
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 16px 0 10px 0;
+    border: 1px solid #000;
+    text-shadow: 1px 1px #000;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.form-full-width {
+    grid-column: span 3;
+}
+
+/* ============================================
+   TOOLBAR SUPERIOR
+   ============================================ */
+.top-toolbar {
+    background: var(--win-bg);
+    border: 2px solid;
+    border-color: var(--win-dark) var(--win-light) var(--win-light) var(--win-dark);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 380px;
+}
+
+/* ============================================
+   SCROLLBAR RETRO
+   ============================================ */
+.table-container::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: var(--win-bg);
+    border: 1px solid var(--win-dark);
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: var(--win-bg);
+    border: 2px solid;
+    border-color: var(--win-light) var(--win-dark) var(--win-dark) var(--win-light);
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #d0d0d0;
+}
+
+.table-container::-webkit-scrollbar-button {
+    background: var(--win-bg);
+    border: 2px solid;
+    border-color: var(--win-light) var(--win-dark) var(--win-dark) var(--win-light);
+    height: 16px;
+    width: 16px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .form-full-width {
+        grid-column: span 1;
+    }
+
+    .table-retro th:last-child,
+    .table-retro td:last-child {
+        min-width: 150px;
+    }
+}
